@@ -32,9 +32,6 @@ function calculator() {
         }
         const length = result.innerText.length;
         result.innerText = result.innerText.substring(0, length - 1);
-        const padding = Number(result.style.paddingLeft.substring(0, 3)) - 10;
-        console.log(result.style.paddingLeft)
-        result.style.paddingLeft = padding + 'px';
     });
     one.addEventListener('click', () => addNumber(1));
     two.addEventListener('click', () => addNumber(2));
@@ -50,47 +47,77 @@ function calculator() {
     divide.addEventListener('click', () => addSymbol('/'));
     add.addEventListener('click', () => addSymbol('+'));
     subtract.addEventListener('click', () => addSymbol('-'));
-    point.addEventListener('click', () => addSymbol(','));
+    point.addEventListener('click', () => addPoint(result.innerText));
     equal.addEventListener('click', () => finish(result.innerText));
 
-    function finish(text) {
-
+    function addPoint(text) {
         const array = text.split('');
+        const length = array.length;
+        if(!array.includes('*') && !array.includes('/') && !array.includes('+') && !array.includes('-') && !array.includes('.')){
+            result.innerText += '.';
+            return;
+        }
+        else if (array[length - 1] == 'x' ||
+                array[length - 1] == '/' ||
+                array[length - 1] == '+' ||
+                array[length - 1] == '-' ||
+                array[length - 1] == '.') {
+                result.innerText = result.innerText.substring(0, length - 1);
+                result.innerText += '.';
+               return;
+            }
+        else {
+            result.innerText += '.';
+            return;
+        }
+       
+        
+    }
+    function finish(text) {
+        
+        const array = text.split('');
+        let result1 = 0;
         if (array.includes('x')) {
             const index = array.indexOf('x');
-            const firstNumber = Number(array.slice(0,index).join(''));
-            const secondNumber = Number(array.slice(index+1).join(''));
-             result1 = firstNumber*secondNumber;
+            const firstNumber = Number(array.slice(0, index).join(''));
+            const secondNumber = Number(array.slice(index + 1).join(''));
+            result1 = firstNumber * secondNumber;
         }
         if (array.includes('/')) {
             const index = array.indexOf('/');
-            const firstNumber = Number(array.slice(0,index).join(''));
-            const secondNumber = Number(array.slice(index+1).join(''));
-             result1 = firstNumber/secondNumber;
+            const firstNumber = Number(array.slice(0, index).join(''));
+            const secondNumber = Number(array.slice(index + 1).join(''));
+            console.log(array)
+            console.log(firstNumber)
+            console.log(secondNumber)
+            result1 = firstNumber / secondNumber;
+            console.log(result1)
         }
         if (array.includes('+')) {
             const index = array.indexOf('+');
-        
-            const firstNumber = Number(array.slice(0,index).join(''));
-            console.log(firstNumber)
+
+            const firstNumber = Number(array.slice(0, index).join(''));
             const secondNumber = Number(array.slice(index).join(''));
-          
-             result1 = firstNumber+secondNumber;
+            result1 = firstNumber + secondNumber;
         }
         if (array.includes('-')) {
             const index = array.indexOf('-');
-            const firstNumber = Number(array.slice(0,index).join(''));
-            const secondNumber = Number(array.slice(index+1).join(''));
-             result1 = firstNumber-secondNumber;
+            const firstNumber = Number(array.slice(0, index).join(''));
+            const secondNumber = Number(array.slice(index + 1).join(''));
+            result1 = firstNumber - secondNumber;
         }
-      
-        return result.innerText = result1;
+
+        result.innerText = result1;
+        console.log(result.innerText)
+        if (result.innerText.length > 10) {
+            result.innerText = result.innerText.substring(0, 10);
+        }
+       // debugger
     }
 
     function addSymbol(symbol) {
         const length = result.innerText.length;
-        if (result.innerText == '0' && symbol !== ',') {
-            result.innerText = number;
+        if (symbol == ',') {
             return;
         }
         if (length == 11) {
@@ -100,29 +127,31 @@ function calculator() {
             result.innerText.includes('/') ||
             result.innerText.includes('+') ||
             result.innerText.includes('-') ||
-            result.innerText.includes(',') ||
+            result.innerText[length - 1] == '.'||
             result.innerText.includes('=')) {
 
             if (result.innerText[length - 1] == 'x' ||
                 result.innerText[length - 1] == '/' ||
                 result.innerText[length - 1] == '+' ||
                 result.innerText[length - 1] == '-' ||
-                result.innerText[length - 1] == ',' ||
-                result.innerText[length - 1] == '=') {
+                result.innerText[length - 1] == '.') {
                 result.innerText = result.innerText.substring(0, length - 1);
             }
             if (result.innerText.includes('x') ||
                 result.innerText.includes('/') ||
                 result.innerText.includes('+') ||
-                result.innerText.includes('-') ||
-                result.innerText.includes(',') ||
-                result.innerText.includes('=')) {
+                result.innerText.includes('-')) {
+                return;
+            }
+            if (result.innerText[length - 1] == '.') {
                 return;
             }
 
             result.innerText += symbol;
 
-
+            return;
+        }
+        if (result.innerText[length - 1] == '.') {
             return;
         }
         result.innerText += symbol;
