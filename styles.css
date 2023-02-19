@@ -1,0 +1,28 @@
+
+table {
+    border: 2px solid black;
+    height: 250px;
+    width: 175px;
+    background-color: antiquewhite;
+}
+.table-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    width: auto;
+}
+button{
+    height: 40px;
+    width: 50px;
+    font-size: 20px;
+}
+.double{
+    width: 100px;
+}
+#result{
+    font-size: 40px;
+}
+.result{
+    text-align: end;
+}
