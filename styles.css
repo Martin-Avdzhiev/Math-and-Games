@@ -9,8 +9,7 @@ table {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 800px;
-    width: auto;
+    padding-top: 250px;
 }
 button{
     height: 40px;
