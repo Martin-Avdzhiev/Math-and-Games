@@ -67,6 +67,15 @@ function calculator() {
                return;
             }
         else {
+            let dots = 0;
+            for (const letter of array){
+                if (letter === '.'){
+                    dots++;
+                }
+            }
+            if(dots == 2){
+                return;
+            }
             result.innerText += '.';
             return;
         }
@@ -106,6 +115,7 @@ function calculator() {
             const secondNumber = Number(array.slice(index + 1).join(''));
             result1 = firstNumber - secondNumber;
         }
+
 
         result.innerText = result1;
         console.log(result.innerText)
