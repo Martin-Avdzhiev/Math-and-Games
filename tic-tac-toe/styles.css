@@ -10,9 +10,9 @@
 .first,
 .second,
 .third{
-  width: 175px;
-  height: 175px;
-  font-size: 170px;
+  width: 150px;
+  height: 150px;
+  font-size: 130px;
   text-align: center;
   padding-bottom: 20px;
 }
@@ -21,25 +21,55 @@
 .secondRow .first,
 .secondRow .second {
 
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
+  border-bottom: 8px solid rgb(16, 126, 217);
+  border-right: 8px solid rgb(16, 126, 217);
 }
 .firstRow .third,
 .secondRow .third {
-  border-bottom: 1px solid black;
+  border-bottom: 8px solid rgb(16, 126, 217);
 }
 
 .thirdRow .first,
 .thirdRow .second{
-  border-right: 1px solid black;
+  border-right: 8px solid rgb(16, 126, 217);
 }
 .container{
-  margin: 175px;
+  margin: 80px;
+  margin-top: 65px;
 }
 
-.center-line::before {
-  content: '';
-  display: block;
-  border-top: 5px solid black;
-  
+.title{
+  text-align: center;
+  font-size: 100px;
+  font-family: Arial, Helvetica, sans-serif;
+  color:rgb(0, 2, 104);
+  border: 12px solid rgb(18, 38, 93);
+  width: 575px;
+  margin: auto;
+  border-radius: 50px;
+  background-color: rgb(119, 142, 205);
+  margin-bottom: 15px;
+}
+
+.first:hover,
+.second:hover,
+.third:hover{
+  background-color: rgb(99 116 115);
+}
+
+button {
+  text-align: center;
+  font-size: 80px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 500px;
+  margin-left: 615px;
+  margin-top: 15px;
+  border-radius: 30px;
+  background-color: aqua;
+  color: rgb(19, 3, 111);
+}
+.win {
+  color: rgb(157 160 240 / 33%);
+  background-color: #0d1251;
+  font-size: 150px;
 }
