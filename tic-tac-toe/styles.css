@@ -1,0 +1,45 @@
+/* set up the rows */
+.firstRow,
+.secondRow,
+.thirdRow {
+  display: flex;
+  justify-content: center;
+}
+
+/* set up the columns */
+.first,
+.second,
+.third{
+  width: 175px;
+  height: 175px;
+  font-size: 170px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.firstRow .first,
+.firstRow .second,
+.secondRow .first,
+.secondRow .second {
+
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+.firstRow .third,
+.secondRow .third {
+  border-bottom: 1px solid black;
+}
+
+.thirdRow .first,
+.thirdRow .second{
+  border-right: 1px solid black;
+}
+.container{
+  margin: 175px;
+}
+
+.center-line::before {
+  content: '';
+  display: block;
+  border-top: 5px solid black;
+  
+}
