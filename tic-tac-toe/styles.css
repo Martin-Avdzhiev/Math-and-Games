@@ -59,17 +59,28 @@
 
 button {
   text-align: center;
-  font-size: 80px;
+  font-size: 45px;
   font-family: Arial, Helvetica, sans-serif;
-  width: 500px;
-  margin-left: 615px;
-  margin-top: 15px;
+  width: 330px;
   border-radius: 30px;
   background-color: aqua;
   color: rgb(19, 3, 111);
+  margin: auto;
+  display: block;
+  margin-top: 30px;
+}
+
+button:hover {
+  background-color: rgb(75, 43, 194);
+  color:rgb(1, 0, 32)
 }
 .win {
   color: rgb(157 160 240 / 33%);
   background-color: #0d1251;
   font-size: 150px;
+}
+
+#buttons{
+  display: flex;
+  justify-content:space-evenly;
 }

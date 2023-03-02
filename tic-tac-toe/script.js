@@ -7,8 +7,9 @@ const sixthDiv = document.querySelector('.secondRow').querySelector('.third');
 const seventhDiv = document.querySelector('.thirdRow').querySelector('.first');
 const eigthDiv = document.querySelector('.thirdRow').querySelector('.second');
 const ninethDiv = document.querySelector('.thirdRow').querySelector('.third');
+
 const title = document.querySelector('.title');
-const restart = document.querySelector('button');
+const restart = document.querySelectorAll('button')[1];
 const array = [];
 let isWin = false;
 array.push(firstDiv);
@@ -116,7 +117,13 @@ function add(e) {
 
     index++;
     if (index > 8) {
-        title.innerText = 'DRAW';
+        if (isWin){
+            title.innerText = 'The Winner is ' + type;
+            title.style.width = '800px';
+        }
+        else {
+            title.innerText = 'DRAW';
+        }
     }
 
 }
@@ -129,7 +136,8 @@ restart.addEventListener('click',()=>{
     divs.splice(0,3);
     divs.splice(3,1);
     divs.splice(6,1);
-
+    let length = divs.length;
+    divs.splice(length-1,1);
     for (const div of divs){
         if(div.classList.length>1){
             div.classList.remove('win');
