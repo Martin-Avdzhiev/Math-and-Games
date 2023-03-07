@@ -10,8 +10,14 @@ const ninethDiv = document.querySelector('.thirdRow').querySelector('.third');
 
 const title = document.querySelector('.title');
 const restart = document.querySelectorAll('button')[1];
+const x = document.querySelectorAll('button')[0];
+const o= document.querySelectorAll('button')[2];
 const array = [];
+let start = false;
 let isWin = false;
+let type = '';
+let firstType = '';
+let contra = '';
 array.push(firstDiv);
 array.push(secondDiv);
 array.push(thirdDiv);
@@ -26,8 +32,7 @@ for (const div of array) {
     div.addEventListener('click', add);
 }
 function add(e) {
-    let type = '';
-    if (isWin) {
+    if (isWin || !start) {
         return;
     }
     if (index > 8) {
@@ -36,13 +41,29 @@ function add(e) {
     if (e.target.innerText) {
         return;
     }
+    if(index == 0){
 
-    if (index % 2 == 0) {
-        type = 'X';
+    }
+   else if (index % 2 == 1) {
+        title.innerText = `${type}'s turn`;
+        if(firstType == 'O'){
+            type = 'X';
+        }
+        else {
+            type = 'O';
+        }
+        
     }
     else {
-        type = 'O';
+        title.innerText = `${type}'s turn`;
+        if(firstType == 'O'){
+            type = 'O';
+        }
+        else {
+            type = 'X';
+        }
     }
+    
     e.target.innerText = type;
 
     if (firstDiv.innerText != '') {
@@ -116,6 +137,7 @@ function add(e) {
     }
 
     index++;
+
     if (index > 8) {
         if (isWin){
             title.innerText = 'The Winner is ' + type;
@@ -132,6 +154,9 @@ function add(e) {
 restart.addEventListener('click',()=>{
     index = 0;
     isWin = false;
+    start = false;
+    x.disabled = false;
+    o.disabled = false;
     const divs = Array.from(document.querySelectorAll('div'));
     divs.splice(0,3);
     divs.splice(3,1);
@@ -147,3 +172,17 @@ restart.addEventListener('click',()=>{
         div.innerText = '';
     }
 })
+
+x.addEventListener('click', choose);
+o.addEventListener('click', choose);
+
+function choose (event){
+    title.style.width = '500px'
+    const player = event.target.innerText[8];
+    start = true;
+    title.innerText = `${player}'s turn`;
+    type = player;
+    firstType = player;
+    x.disabled = true;
+    o.disabled = true;
+}

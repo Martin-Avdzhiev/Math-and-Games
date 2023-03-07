@@ -55,6 +55,7 @@
 .second:hover,
 .third:hover{
   background-color: rgb(99 116 115);
+  cursor:pointer;
 }
 
 button {
@@ -72,7 +73,8 @@ button {
 
 button:hover {
   background-color: rgb(75, 43, 194);
-  color:rgb(1, 0, 32)
+  color:rgb(1, 0, 32);
+  cursor:pointer;
 }
 .win {
   color: rgb(157 160 240 / 33%);
