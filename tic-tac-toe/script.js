@@ -11,7 +11,7 @@ const ninethDiv = document.querySelector('.thirdRow').querySelector('.third');
 const title = document.querySelector('.title');
 const restart = document.querySelectorAll('button')[1];
 const x = document.querySelectorAll('button')[0];
-const o= document.querySelectorAll('button')[2];
+const o = document.querySelectorAll('button')[2];
 const array = [];
 let start = false;
 let isWin = false;
@@ -32,7 +32,14 @@ for (const div of array) {
     div.addEventListener('click', add);
 }
 function add(e) {
-    if (isWin || !start) {
+    
+    
+    if(!start){
+        title.innerText = 'Please choose a player!';
+        title.style.fontSize = '60px';
+        return;
+    }
+    if (isWin) {
         return;
     }
     if (index > 8) {
@@ -42,29 +49,31 @@ function add(e) {
         return;
     }
     if(index == 0){
-
-    }
-   else if (index % 2 == 1) {
-        title.innerText = `${type}'s turn`;
-        if(firstType == 'O'){
+        if(firstType == 'X'){
+            title.innerText = `O's turn`;
             type = 'X';
+            e.target.innerText = type;
         }
         else {
+            title.innerText = `X's turn`;
             type = 'O';
+            e.target.innerText = type;
         }
-        
     }
     else {
-        title.innerText = `${type}'s turn`;
-        if(firstType == 'O'){
+        if(type == 'X'){
+
             type = 'O';
+            e.target.innerText = type;
+            title.innerText = `X's turn`;
         }
         else {
             type = 'X';
+            e.target.innerText = type;
+            title.innerText = `O's turn`;
         }
     }
     
-    e.target.innerText = type;
 
     if (firstDiv.innerText != '') {
         const text = firstDiv.innerText;
@@ -137,6 +146,7 @@ function add(e) {
     }
 
     index++;
+    
 
     if (index > 8) {
         if (isWin){
@@ -177,7 +187,8 @@ x.addEventListener('click', choose);
 o.addEventListener('click', choose);
 
 function choose (event){
-    title.style.width = '500px'
+    title.style.width = '500px';
+    title.style.fontSize = '100px';
     const player = event.target.innerText[8];
     start = true;
     title.innerText = `${player}'s turn`;
