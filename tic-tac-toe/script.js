@@ -32,9 +32,9 @@ for (const div of array) {
     div.addEventListener('click', add);
 }
 function add(e) {
-    
-    
-    if(!start){
+
+
+    if (!start) {
         title.innerText = 'Please choose a player!';
         title.style.fontSize = '60px';
         return;
@@ -48,8 +48,8 @@ function add(e) {
     if (e.target.innerText) {
         return;
     }
-    if(index == 0){
-        if(firstType == 'X'){
+    if (index == 0) {
+        if (firstType == 'X') {
             title.innerText = `O's turn`;
             type = 'X';
             e.target.innerText = type;
@@ -61,7 +61,7 @@ function add(e) {
         }
     }
     else {
-        if(type == 'X'){
+        if (type == 'X') {
 
             type = 'O';
             e.target.innerText = type;
@@ -73,7 +73,7 @@ function add(e) {
             title.innerText = `O's turn`;
         }
     }
-    
+
 
     if (firstDiv.innerText != '') {
         const text = firstDiv.innerText;
@@ -140,16 +140,16 @@ function add(e) {
             ninethDiv.classList.add('win');
         }
     }
-    if (isWin){
+    if (isWin) {
         title.innerText = 'The Winner is ' + type;
-            title.style.width = '800px';
+        title.style.width = '800px';
     }
 
     index++;
-    
+
 
     if (index > 8) {
-        if (isWin){
+        if (isWin) {
             title.innerText = 'The Winner is ' + type;
             title.style.width = '800px';
         }
@@ -161,7 +161,7 @@ function add(e) {
 }
 
 
-restart.addEventListener('click',()=>{
+restart.addEventListener('click', () => {
     index = 0;
     isWin = false;
     start = false;
@@ -169,27 +169,27 @@ restart.addEventListener('click',()=>{
     o.disabled = false;
     const divs = Array.from(document.querySelectorAll('div'));
     console.log(divs)
-     divs.splice(0,3);
-     divs.splice(3,1);
-     divs.splice(6,1);
-     let length = divs.length;
-    divs.splice(length-1,1);
-    for (const div of divs){
-        if(div.classList.length>1){
+    divs.splice(0, 3);
+    divs.splice(3, 1);
+    divs.splice(6, 1);
+    let length = divs.length;
+    divs.splice(length - 1, 1);
+    for (const div of divs) {
+        if (div.classList.length > 1) {
             div.classList.remove('win');
         }
-    if(div.id !== 'buttons'){
-        title.innerText = 'Tic Tac Toe';
-        title.style.width = '575px';
-        div.innerText = '';
-    }
+        if (div.id !== 'buttons') {
+            title.innerText = 'Tic Tac Toe';
+            title.style.width = '575px';
+            div.innerText = '';
+        }
     }
 })
 
 x.addEventListener('click', choose);
 o.addEventListener('click', choose);
 
-function choose (event){
+function choose(event) {
     title.style.width = '500px';
     title.style.fontSize = '100px';
     const player = event.target.innerText[8];
