@@ -168,18 +168,21 @@ restart.addEventListener('click',()=>{
     x.disabled = false;
     o.disabled = false;
     const divs = Array.from(document.querySelectorAll('div'));
-    divs.splice(0,3);
-    divs.splice(3,1);
-    divs.splice(6,1);
-    let length = divs.length;
+    console.log(divs)
+     divs.splice(0,3);
+     divs.splice(3,1);
+     divs.splice(6,1);
+     let length = divs.length;
     divs.splice(length-1,1);
     for (const div of divs){
         if(div.classList.length>1){
             div.classList.remove('win');
         }
+    if(div.id !== 'buttons'){
         title.innerText = 'Tic Tac Toe';
         title.style.width = '575px';
         div.innerText = '';
+    }
     }
 })
 
