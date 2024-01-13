@@ -168,7 +168,6 @@ restart.addEventListener('click', () => {
     x.disabled = false;
     o.disabled = false;
     const divs = Array.from(document.querySelectorAll('div'));
-    console.log(divs)
     divs.splice(0, 3);
     divs.splice(3, 1);
     divs.splice(6, 1);
